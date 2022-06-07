@@ -1,0 +1,32 @@
+html {
+    margin: 0;
+    padding:0;
+    height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  overflow:hidden;
+  line-height: 1.4;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+
+input {
+    margin:0;
+    padding:0;
+}
