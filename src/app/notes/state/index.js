@@ -1,5 +1,5 @@
-import { loadNotes } from './actions';
+import { loadNotes, addNote, updateNote, deleteNote } from './actions';
 import reducer from './reducer';
 import epic from './epic';
 
-export { reducer, epic, loadNotes };
+export { reducer, epic, loadNotes, addNote, updateNote, deleteNote };

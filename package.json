@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.29.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^5.0.7",
     "react-scripts": "^3.0.1",
+    "reactjs-crontab": "^4.5.0",
     "redux": "^4.0.0",
     "redux-observable": "^1.0.0",
     "rxjs": "^6.3.2",
+    "serve": "^13.0.2",
     "styled-components": "^4.1.2"
   },
   "scripts": {

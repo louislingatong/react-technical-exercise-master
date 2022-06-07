@@ -41,7 +41,7 @@ const createNoteService = () => {
             lastId = id;
             return newNote;
         case operations.UPDATE:
-            const note = request.params.note.id;
+            const note = request.params.note;
             const updated = {
                 ...notes[note.id],
                 ...note
@@ -49,7 +49,8 @@ const createNoteService = () => {
             notes[note.id] = updated;
             return updated;
         case operations.DELETE:
-            return delete notes[request.params.id];
+            delete notes[request.params.id];
+            return request.params.id
         default:
             return;
         }

@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import Note from './Note';
+import AddNote from './AddNote';
+import ThemeToggle from './ThemeToggle';
 import Title from './Title';
+import Clock from './Clock';
 import styled from 'styled-components';
 
 const Notes = styled.div`
-    ${(props) => `background: ${ props.theme.pageBackground };`}
+    color: ${ (props) => props.theme.pageFontColor };
+    background: ${ (props) =>  props.theme.pageBackground };
     min-height: 100%;
     padding: 20px;
     header {
@@ -12,36 +16,10 @@ const Notes = styled.div`
         align-items: center;
         justify-content: space-between;
     }
-    #themeToggle {
-        border: 0;
-        padding: 8px 16px;
-        font-size: 12px;
-    }
-    > #addNoteWrapper {
-        display: flex;
-        align-items: center;
-        background: rgba(0,0,0,0.05);
-        padding: 8px 16px;
-        border-radius: 5px;
-        label {
-            color: ${(props) => props.theme.label};
-        }
-        input {
-            background: ${(props) => props.theme.textFieldBackground};
-            border: ${(props) => props.theme.textFieldBorderStyle};
-            padding: 8px;
-            margin: 0 16px;
-            &:focus {
-                background: ${(props) => props.theme.textFieldFocusBackground};
-            }
-        }
-        button {
-            padding: 8px 16px;
-            border:0;
-            background-color: ${(props) => props.theme.buttonBackground};
-            color: ${(props) => props.theme.buttonText};
-        }
-    }
+    -webkit-transition: background 0.5s ease-out;
+    -moz-transition: background 0.5s ease-out;
+    -o-transition: background 0.5s ease-out;
+    transition: background 0.5s ease-out;
 `;
 
 const StyledNotes = (props) => {
@@ -51,22 +29,26 @@ const StyledNotes = (props) => {
 
     return (
         <Notes>
+            <Clock/>
             <header>
                 <Title>Notes</Title>
-                <button id="themeToggle">Toggle theme</button>
+                <ThemeToggle handleChangeTheme={props.handleChangeTheme} darkTheme={props.darkTheme}/>
             </header>
-            <div id="addNoteWrapper">
-                <label>Add another:</label><input type="text" placeholder="text for new note" /><button>Add</button>
-            </div>
+            <AddNote handleAddNote={props.addNote}/>
             {
-                Object.values(props.notes).map((note, i) => {
-                    return (
-                        <Note
-                          key={i}
-                          note={note}
-                        />
-                    );
-                })
+                Object.values(props.notes).length
+                    ? Object.values(props.notes).map((note) => {
+                        return (
+                            <Note
+                              key={note.id}
+                              note={note}
+                              handleUpdateNote={props.updateNote}
+                              handleDeleteNote={props.deleteNote}
+                            />
+                        );
+                    })
+                    : <>No available notes</>
+
             }
         </Notes>
     );
